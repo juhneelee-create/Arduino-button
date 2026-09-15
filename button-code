@@ -1,0 +1,22 @@
+const int buttonPin = 2;     // Button signal pin
+const int ledPin = 13;       // Built-in LED pin
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP); // Uses internal resistor for stable readings
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);              // Starts serial communications at 9600 baud
+}
+
+void loop() {
+  int buttonState = digitalRead(buttonPin);
+
+  // With INPUT_PULLUP, LOW means pressed, HIGH means released
+  if (buttonState == LOW) {
+    digitalWrite(ledPin, HIGH);    // Turn on built-in LED
+    Serial.println("Button Pressed!");
+  } else {
+    digitalWrite(ledPin, LOW);     // Turn off built-in LED
+  }
+
+  delay(50); // Small delay to smooth out readings
+}
